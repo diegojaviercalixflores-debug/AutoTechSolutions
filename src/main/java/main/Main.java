@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main;
-
+import com.formdev.flatlaf.FlatLightLaf;
 import repositorio.RepositorioGenerico;
 import modelo.*;
 import controlador.*;
@@ -14,10 +14,14 @@ import controlador.VehiculoController;
  *
  * @author Diego Calix
  */
+
+
 public class Main {
 
     public static void main(String[] args) {
 
+        FlatLightLaf.setup();
+        
         RepositorioGenerico<Cliente> repoClientes
                 = new RepositorioGenerico<>();
 

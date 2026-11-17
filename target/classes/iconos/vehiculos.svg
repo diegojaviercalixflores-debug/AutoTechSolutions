@@ -1,0 +1,40 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 70 512 372"
+     fill="none">
+
+    <g stroke="#FFFFFF"
+       stroke-width="20"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+
+        <!-- Automóvil trasero -->
+        <path d="M199 120 L204 102 C209 88 221 80 236 80 H398 C413 80 425 88 430 102 L456 190"/>
+        <polygon points="442,140 502,140 492,190 456,190"/>
+        <path d="M328 190 H456 L492 222 C500 230 502 240 502 252 V332 C502 338 498 342 492 342 H382"/>
+        <polygon points="502,252 440,252 422,302 502,302"/>
+        <path d="M422 342 V384 C422 388 425 392 430 392 H474 C479 392 482 388 482 384 V342"/>
+
+        <!-- Automóvil delantero -->
+        <path d="M58 250 L84 142 C89 128 101 120 116 120 H278 C293 120 305 128 310 142 L336 250 Z"/>
+
+        <!-- Espejos -->
+        <polygon points="72,180 10,180 20,230 62,230"/>
+        <polygon points="322,180 382,180 372,230 332,230"/>
+
+        <!-- Carrocería -->
+        <path d="M58 250 L20 282 C13 289 10 298 10 310 V372 C10 378 14 382 20 382 H372 C378 382 382 378 382 372 V310 C382 298 379 289 372 282 L336 250 Z"/>
+
+        <!-- Faros y parrilla -->
+        <polygon points="10,292 70,292 88,342 10,342"/>
+        <rect x="132" y="292" width="128" height="50" rx="4"/>
+        <polygon points="382,292 322,292 304,342 382,342"/>
+
+        <!-- Neumáticos -->
+        <path d="M30 382 V424 C30 428 33 432 38 432 H82 C87 432 90 428 90 424 V382"/>
+        <path d="M302 382 V424 C302 428 305 432 310 432 H354 C359 432 362 428 362 424 V382"/>
+
+    </g>
+</svg>

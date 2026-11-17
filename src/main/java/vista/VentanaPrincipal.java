@@ -12,6 +12,7 @@ import controlador.RepuestoController;
 import controlador.OrdenTrabajoController;
 import controlador.FacturaController;
 import vista.FormularioReportes;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 /**
  *
@@ -46,7 +47,185 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.repuestoController = repuestoController;
         this.ordenTrabajoController = ordenTrabajoController;
         this.facturaController = facturaController;
+        configurarEstilos();
         setLocationRelativeTo(null);
+    }
+
+    private void configurarEstilos() {
+
+        // Configuración de la ventana
+        setSize(600, 400);
+        setMinimumSize(new java.awt.Dimension(750, 400));
+
+        // Fondo general
+        getContentPane().setBackground(
+                new java.awt.Color(248, 250, 252)
+        );
+
+        // Panel superior
+        jPanel1.setBackground(new java.awt.Color(30, 41, 59));
+
+        jLabel1.setForeground(java.awt.Color.WHITE);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 20));
+
+        jLabel2.setForeground(new java.awt.Color(203, 213, 225));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 13));
+
+        // Paneles de secciones
+        java.awt.Color fondoPanel = java.awt.Color.WHITE;
+
+        panelGestion.setBackground(fondoPanel);
+        panelOperaciones.setBackground(fondoPanel);
+        panelConsultas.setBackground(fondoPanel);
+
+        // Títulos de las secciones
+        java.awt.Color colorTitulo = new java.awt.Color(30, 41, 59);
+
+        jLabel3.setForeground(colorTitulo);
+        jLabel4.setForeground(colorTitulo);
+        jLabel5.setForeground(colorTitulo);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+
+        // Estilo de botones
+        JButton[] botones = {
+            BtnClientes, BtnVehiculos, BtnServicios,
+            BtnRepuestos, BtnFacturas, BtnOrdenes,
+            BtnReportes
+        };
+
+        for (JButton boton : botones) {
+
+            boton.setBackground(new java.awt.Color(37, 99, 235));
+            boton.setForeground(java.awt.Color.WHITE);
+            boton.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 13));
+            boton.setFocusPainted(false);
+            boton.setCursor(new java.awt.Cursor(
+                    java.awt.Cursor.HAND_CURSOR
+            ));
+            boton.putClientProperty("JButton.buttonType", "roundRect");
+        }
+        // Iconos de los botones
+        BtnClientes.setIcon(new FlatSVGIcon("iconos/clientes.svg", 24, 24));
+        BtnVehiculos.setIcon(new FlatSVGIcon("iconos/vehiculos.svg", 24, 24));
+        BtnServicios.setIcon(new FlatSVGIcon("iconos/servicios.svg", 24, 24));
+        BtnRepuestos.setIcon(new FlatSVGIcon("iconos/repuestos.svg", 24, 24));
+        BtnFacturas.setIcon(new FlatSVGIcon("iconos/facturas.svg", 24, 24));
+        BtnOrdenes.setIcon(new FlatSVGIcon("iconos/ordenes.svg", 24, 24));
+        BtnReportes.setIcon(new FlatSVGIcon("iconos/reportes.svg", 24, 24));
+        BtnSalir.setIcon(new FlatSVGIcon("iconos/salir.svg", 20, 20));
+
+        // Posición del icono
+        for (JButton boton : botones) {
+            boton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+            boton.setIconTextGap(12);
+        }
+
+        BtnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnSalir.setIconTextGap(8);
+
+        // Botón salir
+        BtnSalir.setBackground(new java.awt.Color(210, 10, 38));
+        BtnSalir.setForeground(java.awt.Color.WHITE);
+        BtnSalir.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 12));
+        BtnSalir.setFocusPainted(false);
+        BtnSalir.setCursor(new java.awt.Cursor(
+                java.awt.Cursor.HAND_CURSOR
+        ));
+
+        BtnSalir.putClientProperty("JButton.buttonType", "roundRect");
+
+        // Centrar los textos del encabezado
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        configurarMenuPrincipal();
+    }
+
+    private void configurarMenuPrincipal() {
+
+        // Panel central del menú
+        javax.swing.JPanel menu = new javax.swing.JPanel(
+                new java.awt.GridBagLayout()
+        );
+
+        menu.setBackground(new java.awt.Color(248, 250, 252));
+
+        // Botones de las primeras tres filas
+        JButton[] botones = {
+            BtnClientes, BtnVehiculos,
+            BtnServicios, BtnRepuestos,
+            BtnFacturas, BtnOrdenes
+        };
+
+        java.awt.GridBagConstraints gbc
+                = new java.awt.GridBagConstraints();
+
+        gbc.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        gbc.insets = new java.awt.Insets(5, 6, 5, 6);
+
+        // Distribuir los seis botones en dos columnas
+        for (int i = 0; i < botones.length; i++) {
+
+            gbc.gridx = i % 2;
+            gbc.gridy = i / 2;
+
+            botones[i].setPreferredSize(
+                    new java.awt.Dimension(175, 55)
+            );
+
+            menu.add(botones[i], gbc);
+        }
+
+        // Reportes ocupa las dos columnas
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+
+        BtnReportes.setPreferredSize(
+                new java.awt.Dimension(175, 55)
+        );
+
+        menu.add(BtnReportes, gbc);
+
+        // Panel inferior para salir
+        javax.swing.JPanel inferior = new javax.swing.JPanel(
+                new java.awt.FlowLayout(
+                        java.awt.FlowLayout.RIGHT, 8, 8
+                )
+        );
+
+        inferior.setBackground(menu.getBackground());
+
+        BtnSalir.setPreferredSize(
+                new java.awt.Dimension(130, 35)
+        );
+
+        inferior.add(BtnSalir);
+
+        // Distribución general
+        getContentPane().removeAll();
+
+        getContentPane().setLayout(
+                new java.awt.BorderLayout(8, 8)
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+        getContentPane().add(menu, java.awt.BorderLayout.CENTER);
+        getContentPane().add(inferior, java.awt.BorderLayout.SOUTH);
+
+        setSize(700, 450);
+        setMinimumSize(new java.awt.Dimension(700, 450));
+
+        revalidate();
+        repaint();
     }
 
     /**
@@ -82,22 +261,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BtnSalir.setText("Salir");
         BtnSalir.addActionListener(this::BtnSalirActionPerformed);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SISTEMA DE GESTIÓN AUTOMOTRIZ");
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MENÚ PRINCIPAL");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel2)))
-                .addGap(85, 85, 85))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,19 +413,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(panelConsultas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelOperaciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelGestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelConsultas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelOperaciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelGestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnSalir)
+                .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -265,8 +436,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
